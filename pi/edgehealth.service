@@ -1,0 +1,17 @@
+[Unit]
+Description=EdgeHealth Pi Gateway
+After=network-online.target
+
+[Service]
+Type=simple
+User=nick
+WorkingDirectory=/home/nick/edgehealth/pi
+Environment=EDGEHEALTH_HMAC=REPLACE_WITH_RENDER_GENERATED_SECRET
+Environment=EDGEHEALTH_CLOUD_URL=https://edgehealth-cloud-XXXX.onrender.com
+Environment=EDGEHEALTH_NTFY_TOPIC=edgehealth-nick-2026
+ExecStart=/home/nick/edgehealth/pi/.venv/bin/python app.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
