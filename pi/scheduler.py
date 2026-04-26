@@ -105,7 +105,7 @@ def daily_summary_job() -> None:
             data=body,
             headers={"Content-Type": "application/json",
                      "X-EdgeHealth-Sig": sig},
-            timeout=10,
+            timeout=90,
         )
         ok = r.ok
         print(f"[summary] pushed {summary['date']} -> {r.status_code}")
